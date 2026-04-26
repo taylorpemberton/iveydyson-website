@@ -7,160 +7,353 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
-          },
-        },
-      },
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
-  </script>
-</head>
-<body class="bg-white text-gray-900 font-sans antialiased">
-  <main class="max-w-xl mx-auto px-6 pt-16 pb-24">
 
-    <!-- Header / Logo -->
-    <header class="mb-2">
-      <div class="group relative inline-block cursor-pointer">
-        <svg class="w-[120px] h-auto group-hover:invisible" viewBox="0 0 790 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: #fff;
+      color: #111;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    main {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 4rem 1.5rem 6rem;
+    }
+
+    /* Header / Logo */
+    header {
+      margin-bottom: 0.5rem;
+    }
+
+    .logo-wrap {
+      position: relative;
+      display: inline-block;
+      cursor: pointer;
+    }
+
+    .logo-wrap svg {
+      width: 120px;
+      height: auto;
+      display: block;
+    }
+
+    .logo-wrap .avatars {
+      display: none;
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+      gap: 4px;
+      align-items: center;
+    }
+
+    .logo-wrap:hover .avatars {
+      display: flex;
+    }
+
+    .logo-wrap:hover svg {
+      visibility: hidden;
+    }
+
+    .avatar {
+      width: 38px;
+      height: 38px;
+      border-radius: 9999px;
+      object-fit: cover;
+    }
+
+    .updated {
+      color: #999;
+      font-size: 0.85rem;
+      margin-bottom: 2.5rem;
+    }
+
+    /* Bio Section */
+    .bio {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-bottom: 3rem;
+    }
+
+    .bio p {
+      color: #111;
+      font-size: 0.95rem;
+    }
+
+    .bio a {
+      color: #111;
+      text-decoration: none;
+      text-underline-offset: 2px;
+      transition: text-decoration 0.2s;
+    }
+
+    .bio a:hover {
+      text-decoration: underline;
+    }
+
+    /* Sections */
+    section {
+      margin-bottom: 2.5rem;
+    }
+
+    section h2 {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #999;
+      margin-bottom: 1rem;
+    }
+
+    .year-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .year-label {
+      font-size: 0.75rem;
+      color: #999;
+      margin-bottom: 0.5rem;
+    }
+
+    .link-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .link-list li {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+    }
+
+    .link-list a {
+      color: #111;
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: color 0.2s;
+    }
+
+    .link-list a:hover {
+      color: #000;
+    }
+
+    .link-list .date {
+      color: #999;
+      font-size: 0.8rem;
+      flex-shrink: 0;
+      margin-left: 1rem;
+    }
+
+    .badge {
+      display: inline-block;
+      background: #ff00aa;
+      color: #fff;
+      font-size: 0.6rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 0.15em 0.5em;
+      border-radius: 3px;
+      margin-left: 0.5rem;
+      vertical-align: middle;
+    }
+
+    /* Education */
+    .edu-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .edu-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+    }
+
+    .edu-logo {
+      width: 48px;
+      height: 48px;
+      border-radius: 0.75rem;
+      flex-shrink: 0;
+      object-fit: contain;
+      background: #f5f5f5;
+    }
+
+    .edu-details {
+      display: flex;
+      flex-direction: column;
+      gap: 0.1rem;
+    }
+
+    .edu-school {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: #111;
+    }
+
+    .edu-degree {
+      font-size: 0.85rem;
+      color: #666;
+    }
+
+    .edu-years {
+      font-size: 0.8rem;
+      color: #999;
+    }
+
+    /* Footer */
+    footer {
+      margin-top: 4rem;
+      color: #999;
+      font-size: 0.8rem;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <div class="logo-wrap">
+        <svg width="790" height="400" viewBox="0 0 790 400" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M493.41 185.866C491.466 138.989 457.63 121.446 421.468 121.446C382.474 121.446 351.342 141.179 345.888 185.866H493.41ZM344.808 219.191C347.512 264.675 378.878 291.575 422.005 291.575C451.886 291.575 478.465 279.4 487.365 252.915H539.049C528.997 306.655 471.895 324.895 422.746 324.895C333.38 324.895 293.773 275.679 293.773 209.307C293.773 136.242 334.739 88.1219 423.562 88.1219C494.26 88.1219 546.062 125.121 546.062 205.878V219.191H344.808Z" fill="#FFBC13"/>
           <path d="M790 95.4575L635.055 399.751H578.949L623.496 315.256L506.89 95.4575H565.517L651.322 267.188L736.884 95.4575H790Z" fill="#93C822"/>
           <path d="M194.432 268.188L279.994 96.457H333.109L220.811 317H166.213L166.605 316.256L50 96.457H108.627L194.432 268.188Z" fill="#0968F6"/>
           <path d="M50 317H0V96.5H50V317ZM50 60H0V0H50V60Z" fill="#F12C2D"/>
         </svg>
-        <div class="hidden group-hover:flex absolute top-1/2 -translate-y-1/2 left-0 gap-1 items-center">
-          <img src="images/ivey-avatar.jpeg" alt="Ivey Dyson" class="w-[38px] h-[38px] rounded-full object-cover">
-          <img src="images/ivey-avatar.jpeg" alt="Ivey Dyson" class="w-[38px] h-[38px] rounded-full object-cover">
-          <img src="images/ivey-avatar.jpeg" alt="Ivey Dyson" class="w-[38px] h-[38px] rounded-full object-cover">
+        <div class="avatars">
+          <img src="images/ivey-avatar.jpeg" alt="Ivey Dyson" class="avatar">
+          <img src="images/ivey-avatar.jpeg" alt="Ivey Dyson" class="avatar">
+          <img src="images/ivey-avatar.jpeg" alt="Ivey Dyson" class="avatar">
         </div>
       </div>
     </header>
-    <p class="text-sm text-gray-400 mb-10">Updated Apr 2026</p>
+    <p class="updated">Updated Apr 2026</p>
 
-    <!-- Bio -->
-    <div class="flex flex-col gap-4 mb-12 text-[0.95rem] text-gray-600 [&_a]:text-gray-900 [&_a]:no-underline hover:[&_a]:underline [&_a]:underline-offset-2">
-      <p>Ivey Dyson is an associate at <a href="https://www.wsgr.com" target="_blank">Wilson Sonsini Goodrich &amp; Rosati</a>, where she focuses on internet strategy and litigation.</p>
+    <div class="bio">
+      <p>Ivey Dyson is an associate at <a href="https://www.wsgr.com" target="_blank">Wilson Sonsini Goodrich &amp; Rosati</a>, where she focuses on AI tech law, internet strategy, and litigation.</p>
       <p>Previously, she was counsel in the <a href="https://www.brennancenter.org/experts/ivey-dyson" target="_blank">Brennan Center for Justice</a>'s Liberty and National Security Program, focusing on surveillance, policing, and AI regulation. Before that, she worked on migrant human rights issues at <a href="https://equal-rights.org" target="_blank">Equal Rights Beyond Borders</a>.</p>
       <p>She holds a JD from <a href="https://www.law.berkeley.edu" target="_blank">UC Berkeley School of Law</a>, a BA in Development Economics and International Development from the <a href="https://www.ou.edu" target="_blank">University of Oklahoma</a>, and studied International Relations at the <a href="https://www.lse.ac.uk" target="_blank">London School of Economics</a>.</p>
     </div>
 
-    <!-- Writing -->
-    <section class="mb-10">
-      <h2 class="text-xs uppercase tracking-wider text-gray-400 mb-4">Writing</h2>
-
-      <div class="mb-6">
-        <div class="text-xs text-gray-400 mb-2">2025</div>
-        <ul class="flex flex-col gap-1.5">
-          <li class="flex items-baseline justify-between">
-            <span><a href="https://www.brennancenter.org/our-work/research-reports/dangers-unregulated-ai-policing" target="_blank" class="text-[0.95rem] text-gray-900 no-underline hover:underline">The Dangers of Unregulated AI in Policing</a><span class="ml-2 inline-block bg-pink-600 text-white text-[0.6rem] font-semibold uppercase tracking-wide px-1.5 py-0.5 rounded align-middle">New</span></span>
-            <span class="text-xs text-gray-400 ml-4 shrink-0">11/20</span>
+    <section>
+      <h2>Writing</h2>
+      <div class="year-group">
+        <div class="year-label">2025</div>
+        <ul class="link-list">
+          <li>
+            <span><a href="https://www.brennancenter.org/our-work/research-reports/dangers-unregulated-ai-policing" target="_blank">The Dangers of Unregulated AI in Policing</a><span class="badge">New</span></span>
+            <span class="date">11/20</span>
           </li>
         </ul>
       </div>
-
-      <div class="mb-6">
-        <div class="text-xs text-gray-400 mb-2">2024</div>
-        <ul class="flex flex-col gap-1.5">
-          <li class="flex items-baseline justify-between">
-            <span><a href="https://www.brennancenter.org/our-work/analysis-opinion/nypd-continues-dodge-surveillance-transparency-laws" target="_blank" class="text-[0.95rem] text-gray-900 no-underline hover:underline">NYPD Continues to Dodge Surveillance Transparency Laws</a></span>
-            <span class="text-xs text-gray-400 ml-4 shrink-0">06/12</span>
+      <div class="year-group">
+        <div class="year-label">2024</div>
+        <ul class="link-list">
+          <li>
+            <span><a href="https://www.brennancenter.org/our-work/analysis-opinion/nypd-continues-dodge-surveillance-transparency-laws" target="_blank">NYPD Continues to Dodge Surveillance Transparency Laws</a></span>
+            <span class="date">06/12</span>
           </li>
-          <li class="flex items-baseline justify-between">
-            <span><a href="https://www.brennancenter.org/our-work/analysis-opinion/nuts-and-bolts-enforcing-ai-guardrails-0" target="_blank" class="text-[0.95rem] text-gray-900 no-underline hover:underline">The Nuts and Bolts of Enforcing AI Guardrails</a></span>
-            <span class="text-xs text-gray-400 ml-4 shrink-0">05/30</span>
+          <li>
+            <span><a href="https://www.brennancenter.org/our-work/analysis-opinion/nuts-and-bolts-enforcing-ai-guardrails-0" target="_blank">The Nuts and Bolts of Enforcing AI Guardrails</a></span>
+            <span class="date">05/30</span>
           </li>
-          <li class="flex items-baseline justify-between">
-            <span><a href="https://www.brennancenter.org/our-work/analysis-opinion/records-show-dc-and-federal-law-enforcement-sharing-surveillance-info" target="_blank" class="text-[0.95rem] text-gray-900 no-underline hover:underline">Records Show DC and Federal Law Enforcement Sharing Surveillance Info on Racial Justice Protests</a></span>
-            <span class="text-xs text-gray-400 ml-4 shrink-0">05/15</span>
+          <li>
+            <span><a href="https://www.brennancenter.org/our-work/analysis-opinion/records-show-dc-and-federal-law-enforcement-sharing-surveillance-info" target="_blank">Records Show DC and Federal Law Enforcement Sharing Surveillance Info on Racial Justice Protests</a></span>
+            <span class="date">05/15</span>
           </li>
-          <li class="flex items-baseline justify-between">
-            <span><a href="https://www.brennancenter.org/our-work/analysis-opinion/documents-reveal-how-dc-police-surveil-social-media-profiles-and-protest" target="_blank" class="text-[0.95rem] text-gray-900 no-underline hover:underline">Documents Reveal How DC Police Surveil Social Media Profiles and Protest Activity</a></span>
-            <span class="text-xs text-gray-400 ml-4 shrink-0">04/30</span>
-          </li>
-        </ul>
-      </div>
-
-      <div class="mb-6">
-        <div class="text-xs text-gray-400 mb-2">2023</div>
-        <ul class="flex flex-col gap-1.5">
-          <li class="flex items-baseline justify-between">
-            <span><a href="https://www.brennancenter.org/our-work/analysis-opinion/new-york-city-must-strengthen-police-transparency-law" target="_blank" class="text-[0.95rem] text-gray-900 no-underline hover:underline">New York City Must Strengthen Police Transparency Law</a></span>
-            <span class="text-xs text-gray-400 ml-4 shrink-0">12/15</span>
-          </li>
-          <li class="flex items-baseline justify-between">
-            <span><a href="https://www.brennancenter.org/our-work/analysis-opinion/nypd-surveillance-needs-oversight-0" target="_blank" class="text-[0.95rem] text-gray-900 no-underline hover:underline">NYPD Surveillance Needs Oversight</a></span>
-            <span class="text-xs text-gray-400 ml-4 shrink-0">12/14</span>
-          </li>
-          <li class="flex items-baseline justify-between">
-            <span><a href="https://www.brennancenter.org/our-work/analysis-opinion/ftc-must-investigate-meta-and-x-complicity-government-surveillance" target="_blank" class="text-[0.95rem] text-gray-900 no-underline hover:underline">FTC Must Investigate Meta and X for Complicity with Government Surveillance</a></span>
-            <span class="text-xs text-gray-400 ml-4 shrink-0">12/12</span>
-          </li>
-          <li class="flex items-baseline justify-between">
-            <span><a href="https://www.brennancenter.org/our-work/analysis-opinion/how-ai-threatens-civil-rights-and-economic-opportunities" target="_blank" class="text-[0.95rem] text-gray-900 no-underline hover:underline">How AI Threatens Civil Rights and Economic Opportunities</a></span>
-            <span class="text-xs text-gray-400 ml-4 shrink-0">11/16</span>
-          </li>
-          <li class="flex items-baseline justify-between">
-            <span><a href="https://www.brennancenter.org/our-work/analysis-opinion/perils-and-promise-ai-regulation" target="_blank" class="text-[0.95rem] text-gray-900 no-underline hover:underline">The Perils and Promise of AI Regulation</a></span>
-            <span class="text-xs text-gray-400 ml-4 shrink-0">07/26</span>
-          </li>
-          <li class="flex items-baseline justify-between">
-            <span><a href="https://www.brennancenter.org/our-work/analysis-opinion/nypd-inspector-general-needs-shoring" target="_blank" class="text-[0.95rem] text-gray-900 no-underline hover:underline">The NYPD Inspector General Needs Shoring Up</a></span>
-            <span class="text-xs text-gray-400 ml-4 shrink-0">05/10</span>
-          </li>
-          <li class="flex items-baseline justify-between">
-            <span><a href="https://www.brennancenter.org/our-work/research-reports/reviving-nypd-inspector-general" target="_blank" class="text-[0.95rem] text-gray-900 no-underline hover:underline">Reviving the NYPD Inspector General</a></span>
-            <span class="text-xs text-gray-400 ml-4 shrink-0">04/25</span>
+          <li>
+            <span><a href="https://www.brennancenter.org/our-work/analysis-opinion/documents-reveal-how-dc-police-surveil-social-media-profiles-and-protest" target="_blank">Documents Reveal How DC Police Surveil Social Media Profiles and Protest Activity</a></span>
+            <span class="date">04/30</span>
           </li>
         </ul>
       </div>
-
-      <div class="mb-6">
-        <div class="text-xs text-gray-400 mb-2">2022</div>
-        <ul class="flex flex-col gap-1.5">
-          <li class="flex items-baseline justify-between">
-            <span><a href="https://www.brennancenter.org/our-work/research-reports/comments-submitted-federal-trade-commission-social-media-monitoring" target="_blank" class="text-[0.95rem] text-gray-900 no-underline hover:underline">Comments Submitted to the FTC on Social Media Monitoring</a></span>
-            <span class="text-xs text-gray-400 ml-4 shrink-0">11/28</span>
+      <div class="year-group">
+        <div class="year-label">2023</div>
+        <ul class="link-list">
+          <li>
+            <span><a href="https://www.brennancenter.org/our-work/analysis-opinion/new-york-city-must-strengthen-police-transparency-law" target="_blank">New York City Must Strengthen Police Transparency Law</a></span>
+            <span class="date">12/15</span>
+          </li>
+          <li>
+            <span><a href="https://www.brennancenter.org/our-work/analysis-opinion/nypd-surveillance-needs-oversight-0" target="_blank">NYPD Surveillance Needs Oversight</a></span>
+            <span class="date">12/14</span>
+          </li>
+          <li>
+            <span><a href="https://www.brennancenter.org/our-work/analysis-opinion/ftc-must-investigate-meta-and-x-complicity-government-surveillance" target="_blank">FTC Must Investigate Meta and X for Complicity with Government Surveillance</a></span>
+            <span class="date">12/12</span>
+          </li>
+          <li>
+            <span><a href="https://www.brennancenter.org/our-work/analysis-opinion/how-ai-threatens-civil-rights-and-economic-opportunities" target="_blank">How AI Threatens Civil Rights and Economic Opportunities</a></span>
+            <span class="date">11/16</span>
+          </li>
+          <li>
+            <span><a href="https://www.brennancenter.org/our-work/analysis-opinion/perils-and-promise-ai-regulation" target="_blank">The Perils and Promise of AI Regulation</a></span>
+            <span class="date">07/26</span>
+          </li>
+          <li>
+            <span><a href="https://www.brennancenter.org/our-work/analysis-opinion/nypd-inspector-general-needs-shoring" target="_blank">The NYPD Inspector General Needs Shoring Up</a></span>
+            <span class="date">05/10</span>
+          </li>
+          <li>
+            <span><a href="https://www.brennancenter.org/our-work/research-reports/reviving-nypd-inspector-general" target="_blank">Reviving the NYPD Inspector General</a></span>
+            <span class="date">04/25</span>
+          </li>
+        </ul>
+      </div>
+      <div class="year-group">
+        <div class="year-label">2022</div>
+        <ul class="link-list">
+          <li>
+            <span><a href="https://www.brennancenter.org/our-work/research-reports/comments-submitted-federal-trade-commission-social-media-monitoring" target="_blank">Comments Submitted to the FTC on Social Media Monitoring</a></span>
+            <span class="date">11/28</span>
           </li>
         </ul>
       </div>
     </section>
 
-    <!-- Education -->
-    <section class="mb-10">
-      <h2 class="text-xs uppercase tracking-wider text-gray-400 mb-4">Education</h2>
-      <ul class="flex flex-col gap-4">
-        <li class="flex items-start gap-3">
-          <img src="images/berkeleylaw_logo.jpeg" alt="UC Berkeley Law" class="w-12 h-12 rounded-xl shrink-0 object-cover bg-gray-100 border border-gray-200/50">
-          <div class="flex flex-col gap-0.5">
-            <span class="text-[0.95rem] font-medium text-gray-900">University of California, Berkeley &mdash; School of Law</span>
-            <span class="text-sm text-gray-500">Juris Doctor</span>
-            <span class="text-xs text-gray-400">2018 &ndash; 2021</span>
+    <section>
+      <h2>Education</h2>
+      <ul class="edu-list">
+        <li class="edu-item">
+          <img class="edu-logo" src="images/berkeleylaw_logo.jpeg" alt="UC Berkeley Law">
+          <div class="edu-details">
+            <span class="edu-school">University of California, Berkeley &mdash; School of Law</span>
+            <span class="edu-degree">Juris Doctor</span>
+            <span class="edu-years">2018 &ndash; 2021</span>
           </div>
         </li>
-        <li class="flex items-start gap-3">
-          <img src="images/university_of_oklahoma_logo.jpeg" alt="University of Oklahoma" class="w-12 h-12 rounded-xl shrink-0 object-cover bg-gray-100 border border-gray-200/50">
-          <div class="flex flex-col gap-0.5">
-            <span class="text-[0.95rem] font-medium text-gray-900">University of Oklahoma</span>
-            <span class="text-sm text-gray-500">Bachelor's Degree, Development Economics and International Development</span>
-            <span class="text-xs text-gray-400">2014 &ndash; 2017</span>
+        <li class="edu-item">
+          <img class="edu-logo" src="images/university_of_oklahoma_logo.jpeg" alt="University of Oklahoma">
+          <div class="edu-details">
+            <span class="edu-school">University of Oklahoma</span>
+            <span class="edu-degree">Bachelor's Degree, Development Economics and International Development</span>
+            <span class="edu-years">2014 &ndash; 2017</span>
           </div>
         </li>
-        <li class="flex items-start gap-3">
-          <img src="images/london_school_of_economics_logo.jpeg" alt="LSE" class="w-12 h-12 rounded-xl shrink-0 object-cover bg-gray-100 border border-gray-200/50">
-          <div class="flex flex-col gap-0.5">
-            <span class="text-[0.95rem] font-medium text-gray-900">The London School of Economics and Political Science (LSE)</span>
-            <span class="text-sm text-gray-500">International Relations, Summer School</span>
-            <span class="text-xs text-gray-400">2017</span>
+        <li class="edu-item">
+          <img class="edu-logo" src="images/london_school_of_economics_logo.jpeg" alt="LSE">
+          <div class="edu-details">
+            <span class="edu-school">The London School of Economics and Political Science (LSE)</span>
+            <span class="edu-degree">International Relations, Summer School</span>
+            <span class="edu-years">2017</span>
           </div>
         </li>
       </ul>
     </section>
 
-    <footer class="mt-16 text-xs text-gray-400">
+    <footer>
       &copy; 2026 Ivey Dyson
     </footer>
   </main>
