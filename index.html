@@ -112,14 +112,20 @@
     }
 
     .bio a {
-      color: #374151;
+      color: inherit;
       text-decoration: underline;
       text-underline-offset: 2px;
-      transition: color 0.2s;
     }
 
-    .bio a:hover {
+    .press {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .press p {
       color: #111;
+      font-size: 0.95rem;
     }
 
     /* Sections */
@@ -279,20 +285,11 @@
     <div class="bio">
       <p>Ivey Dyson is an associate at <a href="https://www.wsgr.com" target="_blank">Wilson Sonsini Goodrich &amp; Rosati</a>, where she focuses on AI tech law, internet strategy, and litigation.</p>
       <p>Previously, she was counsel in the <a href="https://www.brennancenter.org/experts/ivey-dyson" target="_blank">Brennan Center for Justice</a>'s Liberty and National Security Program, focusing on surveillance, policing, and AI regulation. Before that, she worked on migrant human rights issues at <a href="https://equal-rights.org" target="_blank">Equal Rights Beyond Borders</a>.</p>
-      <p>She holds a JD from <a href="https://www.law.berkeley.edu" target="_blank">UC Berkeley School of Law</a>, a BA in Development Economics and International Development from the <a href="https://www.ou.edu" target="_blank">University of Oklahoma</a>, and studied International Relations at the <a href="https://www.lse.ac.uk" target="_blank">London School of Economics</a>.</p>
+      <p>She holds a JD from <a href="https://www.law.berkeley.edu" target="_blank">UC Berkeley School of Law</a>, a BA in International Development from the <a href="https://www.ou.edu" target="_blank">University of Oklahoma</a>, and studied International Relations at the <a href="https://www.lse.ac.uk" target="_blank">London School of Economics</a>.</p>
     </div>
 
     <section>
       <h2>Writing</h2>
-      <div class="year-group">
-        <div class="year-label">2025</div>
-        <ul class="link-list">
-          <li>
-            <span><a href="https://www.brennancenter.org/our-work/research-reports/dangers-unregulated-ai-policing" target="_blank">The Dangers of Unregulated AI in Policing</a><span class="badge">New</span></span>
-            <span class="date">11/20</span>
-          </li>
-        </ul>
-      </div>
       <div class="year-group">
         <div class="year-label">2024</div>
         <ul class="link-list">
@@ -326,14 +323,6 @@
             <span class="date">12/14</span>
           </li>
           <li>
-            <span><a href="https://www.brennancenter.org/our-work/analysis-opinion/ftc-must-investigate-meta-and-x-complicity-government-surveillance" target="_blank">FTC Must Investigate Meta and X for Complicity with Government Surveillance</a></span>
-            <span class="date">12/12</span>
-          </li>
-          <li>
-            <span><a href="https://www.brennancenter.org/our-work/analysis-opinion/how-ai-threatens-civil-rights-and-economic-opportunities" target="_blank">How AI Threatens Civil Rights and Economic Opportunities</a></span>
-            <span class="date">11/16</span>
-          </li>
-          <li>
             <span><a href="https://www.brennancenter.org/our-work/analysis-opinion/perils-and-promise-ai-regulation" target="_blank">The Perils and Promise of AI Regulation</a></span>
             <span class="date">07/26</span>
           </li>
@@ -347,14 +336,13 @@
           </li>
         </ul>
       </div>
-      <div class="year-group">
-        <div class="year-label">2022</div>
-        <ul class="link-list">
-          <li>
-            <span><a href="https://www.brennancenter.org/our-work/research-reports/comments-submitted-federal-trade-commission-social-media-monitoring" target="_blank">Comments Submitted to the FTC on Social Media Monitoring</a></span>
-            <span class="date">11/28</span>
-          </li>
-        </ul>
+    </section>
+
+    <section>
+      <h2>Press</h2>
+      <div class="press">
+        <p>Published in Just Security, City &amp; State New York, the New York Daily News, and Univision.</p>
+        <p>Featured in Bloomberg Law, Puck News, and StateScoop.</p>
       </div>
     </section>
 
@@ -373,7 +361,7 @@
           <img class="edu-logo" src="images/university_of_oklahoma_logo.jpeg" alt="University of Oklahoma">
           <div class="edu-details">
             <span class="edu-school">University of Oklahoma</span>
-            <span class="edu-degree">Bachelor's Degree, Development Economics and International Development</span>
+            <span class="edu-degree">Bachelor's Degree, International Development</span>
             <span class="edu-years">2014 &ndash; 2017</span>
           </div>
         </li>
