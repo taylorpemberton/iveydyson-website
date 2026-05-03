@@ -241,6 +241,26 @@
       color: #999;
       font-size: 0.8rem;
     }
+
+    @media (max-width: 600px) {
+      .link-list li {
+        gap: 0.75rem;
+      }
+      .link-list li > span:first-child {
+        display: flex;
+        align-items: center;
+        flex: 1;
+        min-width: 0;
+      }
+      .link-list li > span:first-child > a {
+        display: block;
+        flex: 1;
+        min-width: 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+    }
   </style>
 </head>
 <body>
