@@ -1,0 +1,40 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-white text-gray-800 font-sans antialiased;
+    line-height: 1.6;
+  }
+}
+
+@layer components {
+  .avatar-wrap {
+    --mx: 50%;
+    --my: 50%;
+    --ang: 200deg;
+  }
+  .avatar-wrap::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 9999px;
+    opacity: 0;
+    mix-blend-mode: color;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+  }
+  .avatar-wrap:hover::after {
+    opacity: 1;
+  }
+  .avatar-wrap.tint-iv::after {
+    background: conic-gradient(from var(--ang) at var(--mx) var(--my), #7e3af2, #e74694, #ff8a4c, #7e3af2);
+  }
+  .avatar-wrap.tint-ve::after {
+    background: radial-gradient(circle at var(--mx) var(--my), #ff8a4c 0%, #e74694 70%);
+  }
+  .avatar-wrap.tint-ey::after {
+    background: linear-gradient(var(--ang), #ff8a4c 0%, #16bdca 60%, #7e3af2 100%);
+  }
+}
