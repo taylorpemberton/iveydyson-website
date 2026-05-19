@@ -9,6 +9,7 @@ const buildDate = new Intl.DateTimeFormat("en-US", {
 
 export default defineConfig({
   plugins: [react()],
+  server: { port: 3001 },
   define: {
     __BUILD_DATE__: JSON.stringify(buildDate),
   },
