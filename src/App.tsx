@@ -65,26 +65,19 @@ const listLinkClass = "text-gray-700 text-15 no-underline underline-offset-2 tra
 export default function App() {
   return (
     <main className="mx-auto max-w-[600px] px-6 pt-16 pb-24">
-      <header className="group relative mb-10 cursor-pointer">
-        <div className="group-hover:invisible">
-          <span className="block text-15 font-medium text-gray-800">Ivey Dyson</span>
-          <p className="text-sm text-gray-400">Updated {__BUILD_DATE__}</p>
-        </div>
-        <div className="absolute left-0 top-0 hidden items-center group-hover:flex">
-          {tints.map((tint) => (
-            <span
-              key={tint}
-              onMouseMove={handleAvatarMove}
-              className={`avatar-wrap ${tint} relative inline-block h-[44px] w-[44px] overflow-hidden rounded-full`}
-            >
-              <img
-                src="/images/ivey-avatar.jpeg"
-                alt="Ivey Dyson"
-                className="block h-full w-full rounded-full object-cover transition-[filter] duration-300 hover:saturate-150 hover:contrast-[1.05]"
-              />
-            </span>
-          ))}
-        </div>
+      <header className="mb-10">
+        <span
+          onMouseMove={handleAvatarMove}
+          className="avatar-wrap tint-iv relative mb-3 inline-block h-[40px] w-[40px] overflow-hidden rounded-full"
+        >
+          <img
+            src="/images/ivey-avatar.jpeg"
+            alt="Ivey Dyson"
+            className="block h-full w-full rounded-full object-cover transition-[filter] duration-300 hover:saturate-150 hover:contrast-[1.05]"
+          />
+        </span>
+        <span className="block text-15 font-medium text-gray-800">Ivey Dyson</span>
+        <p className="text-sm text-gray-400">Updated {__BUILD_DATE__}</p>
       </header>
 
       <div className="mb-12 flex flex-col gap-4 text-15 text-gray-800">
