@@ -46,7 +46,6 @@ const education: Education[] = [
   },
 ];
 
-const tints = ["tint-iv", "tint-ve", "tint-ey"] as const;
 
 function handleAvatarMove(e: React.MouseEvent<HTMLSpanElement>) {
   const target = e.currentTarget;
