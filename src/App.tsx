@@ -1,15 +1,17 @@
+import { useEffect, useRef, useState } from "react";
+
 type Writing = { title: string; href: string; date: string };
 
 const writings: Writing[] = [
-  { title: "NYPD Continues to Dodge Surveillance Transparency Laws", href: "https://www.brennancenter.org/our-work/analysis-opinion/nypd-continues-dodge-surveillance-transparency-laws", date: "06/12" },
-  { title: "The Nuts and Bolts of Enforcing AI Guardrails", href: "https://www.brennancenter.org/our-work/analysis-opinion/nuts-and-bolts-enforcing-ai-guardrails-0", date: "05/30" },
-  { title: "Records Show DC and Federal Law Enforcement Sharing Surveillance Info on Racial Justice Protests", href: "https://www.brennancenter.org/our-work/analysis-opinion/records-show-dc-and-federal-law-enforcement-sharing-surveillance-info", date: "05/15" },
-  { title: "Documents Reveal How DC Police Surveil Social Media Profiles and Protest Activity", href: "https://www.brennancenter.org/our-work/analysis-opinion/documents-reveal-how-dc-police-surveil-social-media-profiles-and-protest", date: "04/30" },
-  { title: "New York City Must Strengthen Police Transparency Law", href: "https://www.brennancenter.org/our-work/analysis-opinion/new-york-city-must-strengthen-police-transparency-law", date: "12/15" },
-  { title: "NYPD Surveillance Needs Oversight", href: "https://www.brennancenter.org/our-work/analysis-opinion/nypd-surveillance-needs-oversight-0", date: "12/14" },
-  { title: "The Perils and Promise of AI Regulation", href: "https://www.brennancenter.org/our-work/analysis-opinion/perils-and-promise-ai-regulation", date: "07/26" },
-  { title: "The NYPD Inspector General Needs Shoring Up", href: "https://www.brennancenter.org/our-work/analysis-opinion/nypd-inspector-general-needs-shoring", date: "05/10" },
-  { title: "Reviving the NYPD Inspector General", href: "https://www.brennancenter.org/our-work/research-reports/reviving-nypd-inspector-general", date: "04/25" },
+  { title: "NYPD Continues to Dodge Surveillance Transparency Laws", href: "https://www.brennancenter.org/our-work/analysis-opinion/nypd-continues-dodge-surveillance-transparency-laws", date: "06/24" },
+  { title: "The Nuts and Bolts of Enforcing AI Guardrails", href: "https://www.brennancenter.org/our-work/analysis-opinion/nuts-and-bolts-enforcing-ai-guardrails-0", date: "05/24" },
+  { title: "Records Show DC and Federal Law Enforcement Sharing Surveillance Info on Racial Justice Protests", href: "https://www.brennancenter.org/our-work/analysis-opinion/records-show-dc-and-federal-law-enforcement-sharing-surveillance-info", date: "05/24" },
+  { title: "Documents Reveal How DC Police Surveil Social Media Profiles and Protest Activity", href: "https://www.brennancenter.org/our-work/analysis-opinion/documents-reveal-how-dc-police-surveil-social-media-profiles-and-protest", date: "04/24" },
+  { title: "New York City Must Strengthen Police Transparency Law", href: "https://www.brennancenter.org/our-work/analysis-opinion/new-york-city-must-strengthen-police-transparency-law", date: "12/23" },
+  { title: "NYPD Surveillance Needs Oversight", href: "https://www.brennancenter.org/our-work/analysis-opinion/nypd-surveillance-needs-oversight-0", date: "12/23" },
+  { title: "The Perils and Promise of AI Regulation", href: "https://www.brennancenter.org/our-work/analysis-opinion/perils-and-promise-ai-regulation", date: "07/23" },
+  { title: "The NYPD Inspector General Needs Shoring Up", href: "https://www.brennancenter.org/our-work/analysis-opinion/nypd-inspector-general-needs-shoring", date: "05/23" },
+  { title: "Reviving the NYPD Inspector General", href: "https://www.brennancenter.org/our-work/research-reports/reviving-nypd-inspector-general", date: "04/23" },
 ];
 
 type Education = {
@@ -58,10 +60,33 @@ function handleAvatarMove(e: React.MouseEvent<HTMLSpanElement>) {
   target.style.setProperty("--ang", `${angle}deg`);
 }
 
-const bioLinkClass = "underline underline-offset-2 transition-colors hover:text-purple-800";
-const listLinkClass = "text-gray-700 text-15 no-underline underline-offset-2 transition-colors hover:text-purple-800 hover:underline";
+const bioLinkClass = "underline underline-offset-2 transition-colors hover:text-orange-600";
+const listLinkClass = "text-gray-700 text-15 no-underline underline-offset-2 transition-colors hover:text-orange-600 hover:underline";
+
+const MARQUEE_SPEED_PX_PER_SEC = 45;
 
 export default function App() {
+  const containerRefs = useRef<(HTMLSpanElement | null)[]>([]);
+  const textRefs = useRef<(HTMLAnchorElement | null)[]>([]);
+  const [marquees, setMarquees] = useState<{ distance: number; duration: number }[]>([]);
+
+  useEffect(() => {
+    function measure() {
+      setMarquees(
+        writings.map((_, i) => {
+          const container = containerRefs.current[i];
+          const text = textRefs.current[i];
+          if (!container || !text) return { distance: 0, duration: 0 };
+          const distance = Math.max(0, text.scrollWidth - container.clientWidth);
+          return { distance, duration: distance / MARQUEE_SPEED_PX_PER_SEC };
+        }),
+      );
+    }
+    measure();
+    window.addEventListener("resize", measure);
+    return () => window.removeEventListener("resize", measure);
+  }, []);
+
   return (
     <main className="mx-auto max-w-[600px] px-6 pt-16 pb-24">
       <header className="mb-10">
@@ -71,17 +96,17 @@ export default function App() {
         >
           <img
             src="/images/ivey-avatar.jpeg"
-            alt="Ivey Dyson"
+            alt="Ivey Pemberton"
             className="block h-full w-full rounded-full object-cover transition-[filter] duration-300 hover:saturate-150 hover:contrast-[1.05]"
           />
         </span>
-        <span className="block text-15 font-medium text-gray-800">Ivey Dyson</span>
+        <span className="block text-15 font-medium text-gray-800">Ivey Pemberton</span>
         <p className="text-sm text-gray-400">Updated {__BUILD_DATE__}</p>
       </header>
 
       <div className="mb-12 flex flex-col gap-4 text-15 text-gray-800">
         <p>
-          Ivey Dyson is an associate at{" "}
+          Ivey Pemberton is an associate at{" "}
           <a className={bioLinkClass} href="https://www.wsgr.com" target="_blank" rel="noreferrer">
             Wilson Sonsini Goodrich &amp; Rosati
           </a>
@@ -119,10 +144,29 @@ export default function App() {
       <section className="mb-10">
         <h2 className="mb-4 text-xs uppercase tracking-[0.08em] text-gray-400">Writing</h2>
         <ul className="flex list-none flex-col gap-[0.4rem]">
-          {writings.map((w) => (
-            <li key={w.href} className="flex items-baseline justify-between max-[600px]:gap-3">
-              <span className="max-[600px]:block max-[600px]:min-w-0 max-[600px]:flex-1 max-[600px]:overflow-hidden max-[600px]:text-ellipsis max-[600px]:whitespace-nowrap">
-                <a className={listLinkClass} href={w.href} target="_blank" rel="noreferrer">
+          {writings.map((w, i) => (
+            <li
+              key={w.href}
+              className={`flex items-baseline justify-between rounded-md px-2 py-1 max-[600px]:gap-3${i % 2 === 1 ? " bg-gray-100" : ""}`}
+            >
+              <span
+                ref={(el) => (containerRefs.current[i] = el)}
+                className="group relative block min-w-0 flex-1 overflow-hidden whitespace-nowrap [mask-image:linear-gradient(to_right,black_85%,transparent_100%)] hover:[mask-image:none]"
+              >
+                <a
+                  ref={(el) => (textRefs.current[i] = el)}
+                  className={`inline-block ease-linear group-hover:[transform:translateX(calc(var(--marquee-distance)*-1))] ${listLinkClass}`}
+                  style={
+                    {
+                      "--marquee-distance": `${marquees[i]?.distance ?? 0}px`,
+                      transitionProperty: "transform",
+                      transitionDuration: `${marquees[i]?.duration ?? 0}s`,
+                    } as React.CSSProperties
+                  }
+                  href={w.href}
+                  target="_blank"
+                  rel="noreferrer"
+                >
                   {w.title}
                 </a>
               </span>
@@ -161,8 +205,8 @@ export default function App() {
       </section>
 
       <footer className="mt-16 flex items-center justify-between text-xs text-gray-400">
-        <span>© 2026 Ivey Dyson</span>
-        <a className="transition-colors hover:text-purple-800" href="mailto:iveydyson@gmail.com">
+        <span>© 2026 Ivey Pemberton</span>
+        <a className="transition-colors hover:text-orange-600" href="mailto:iveydyson@gmail.com">
           iveydyson@gmail.com
         </a>
       </footer>
