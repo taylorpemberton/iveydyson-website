@@ -96,17 +96,17 @@ export default function App() {
         >
           <img
             src="/images/ivey-avatar.jpeg"
-            alt="Ivey Pemberton"
+            alt="Ivey Dyson"
             className="block h-full w-full rounded-full object-cover transition-[filter] duration-300 hover:saturate-150 hover:contrast-[1.05]"
           />
         </span>
-        <span className="block text-15 font-medium text-gray-800">Ivey Pemberton</span>
+        <span className="block text-15 font-medium text-gray-800">Ivey Dyson</span>
         <p className="text-sm text-gray-400">Updated {__BUILD_DATE__}</p>
       </header>
 
       <div className="mb-12 flex flex-col gap-4 text-15 text-gray-800">
         <p>
-          Ivey Pemberton is an associate at{" "}
+          Ivey Dyson is an associate at{" "}
           <a className={bioLinkClass} href="https://www.wsgr.com" target="_blank" rel="noreferrer">
             Wilson Sonsini Goodrich &amp; Rosati
           </a>
@@ -205,7 +205,7 @@ export default function App() {
       </section>
 
       <footer className="mt-16 flex items-center justify-between text-xs text-gray-400">
-        <span>© 2026 Ivey Pemberton</span>
+        <span>© 2026 Ivey Dyson</span>
         <a className="transition-colors hover:text-orange-600" href="mailto:iveydyson@gmail.com">
           iveydyson@gmail.com
         </a>
