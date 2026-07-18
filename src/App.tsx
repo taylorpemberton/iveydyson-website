@@ -107,7 +107,7 @@ export default function App() {
       <div className="mb-12 flex flex-col gap-4 text-15 text-gray-800">
         <p>
           Ivey Dyson is an associate at{" "}
-          <a className={bioLinkClass} href="https://www.wsgr.com" target="_blank" rel="noreferrer">
+          <a className={bioLinkClass} href="https://www.wsgr.com/en/people/ivey-dyson.html" target="_blank" rel="noreferrer">
             Wilson Sonsini Goodrich &amp; Rosati
           </a>
           , where she focuses on AI tech law, internet strategy, and litigation.
