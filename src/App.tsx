@@ -3,15 +3,15 @@ import { useEffect, useRef, useState } from "react";
 type Writing = { title: string; href: string; date: string };
 
 const writings: Writing[] = [
-  { title: "NYPD Continues to Dodge Surveillance Transparency Laws", href: "https://www.brennancenter.org/our-work/analysis-opinion/nypd-continues-dodge-surveillance-transparency-laws", date: "06/24" },
-  { title: "The Nuts and Bolts of Enforcing AI Guardrails", href: "https://www.brennancenter.org/our-work/analysis-opinion/nuts-and-bolts-enforcing-ai-guardrails-0", date: "05/24" },
-  { title: "Records Show DC and Federal Law Enforcement Sharing Surveillance Info on Racial Justice Protests", href: "https://www.brennancenter.org/our-work/analysis-opinion/records-show-dc-and-federal-law-enforcement-sharing-surveillance-info", date: "05/24" },
-  { title: "Documents Reveal How DC Police Surveil Social Media Profiles and Protest Activity", href: "https://www.brennancenter.org/our-work/analysis-opinion/documents-reveal-how-dc-police-surveil-social-media-profiles-and-protest", date: "04/24" },
-  { title: "New York City Must Strengthen Police Transparency Law", href: "https://www.brennancenter.org/our-work/analysis-opinion/new-york-city-must-strengthen-police-transparency-law", date: "12/23" },
-  { title: "NYPD Surveillance Needs Oversight", href: "https://www.brennancenter.org/our-work/analysis-opinion/nypd-surveillance-needs-oversight-0", date: "12/23" },
-  { title: "The Perils and Promise of AI Regulation", href: "https://www.brennancenter.org/our-work/analysis-opinion/perils-and-promise-ai-regulation", date: "07/23" },
-  { title: "The NYPD Inspector General Needs Shoring Up", href: "https://www.brennancenter.org/our-work/analysis-opinion/nypd-inspector-general-needs-shoring", date: "05/23" },
-  { title: "Reviving the NYPD Inspector General", href: "https://www.brennancenter.org/our-work/research-reports/reviving-nypd-inspector-general", date: "04/23" },
+  { title: "NYPD Continues to Dodge Surveillance Transparency Laws", href: "https://www.brennancenter.org/our-work/analysis-opinion/nypd-continues-dodge-surveillance-transparency-laws", date: "6/2024" },
+  { title: "The Nuts and Bolts of Enforcing AI Guardrails", href: "https://www.brennancenter.org/our-work/analysis-opinion/nuts-and-bolts-enforcing-ai-guardrails-0", date: "5/2024" },
+  { title: "Records Show DC and Federal Law Enforcement Sharing Surveillance Info on Racial Justice Protests", href: "https://www.brennancenter.org/our-work/analysis-opinion/records-show-dc-and-federal-law-enforcement-sharing-surveillance-info", date: "5/2024" },
+  { title: "Documents Reveal How DC Police Surveil Social Media Profiles and Protest Activity", href: "https://www.brennancenter.org/our-work/analysis-opinion/documents-reveal-how-dc-police-surveil-social-media-profiles-and-protest", date: "4/2024" },
+  { title: "New York City Must Strengthen Police Transparency Law", href: "https://www.brennancenter.org/our-work/analysis-opinion/new-york-city-must-strengthen-police-transparency-law", date: "12/2023" },
+  { title: "NYPD Surveillance Needs Oversight", href: "https://www.brennancenter.org/our-work/analysis-opinion/nypd-surveillance-needs-oversight-0", date: "12/2023" },
+  { title: "The Perils and Promise of AI Regulation", href: "https://www.brennancenter.org/our-work/analysis-opinion/perils-and-promise-ai-regulation", date: "7/2023" },
+  { title: "The NYPD Inspector General Needs Shoring Up", href: "https://www.brennancenter.org/our-work/analysis-opinion/nypd-inspector-general-needs-shoring", date: "5/2023" },
+  { title: "Reviving the NYPD Inspector General", href: "https://www.brennancenter.org/our-work/research-reports/reviving-nypd-inspector-general", date: "4/2023" },
 ];
 
 type Education = {
